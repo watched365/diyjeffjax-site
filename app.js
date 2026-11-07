@@ -18,4 +18,8 @@ document.querySelectorAll('.lead-form').forEach(form=>{
     window.location.href=`mailto:contact@diyjeffjax.com?subject=${subject}&body=${body}`;
   });
 });
+const pkgSelect=document.getElementById('package-select');
+function setPackage(v){ if(!pkgSelect||!v) return; for(const o of pkgSelect.options){ if(o.value===v){ pkgSelect.value=v; return; } } }
+document.querySelectorAll('[data-package]').forEach(b=>b.addEventListener('click',()=>setPackage(b.dataset.package)));
+const qp=new URLSearchParams(location.search).get('package'); if(qp) setPackage(qp);
 const y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear();
